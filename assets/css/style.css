@@ -70,6 +70,16 @@ section, div[id] { scroll-margin-top: 80px; }
   padding: .6rem 0;
 }
 
+.pk-navbar-logo {
+  height: 95px;
+  width: auto;
+  transition: height .4s ease;
+}
+.pk-navbar.scrolled .pk-navbar-logo {
+  height: 70px;
+  width: auto;
+}
+
 /* Links brancos sobre a imagem do hero */
 .pk-navbar .nav-link {
   font-family: var(--font-display);
@@ -112,7 +122,6 @@ section, div[id] { scroll-margin-top: 80px; }
 
 /* ── BUTTONS ──────────────────────────────────────── */
 .pk-btn-primary {
-  background: var(--green);
   color: #fff;
   font-family: var(--font-display);
   font-weight: 600;
@@ -120,16 +129,21 @@ section, div[id] { scroll-margin-top: 80px; }
   padding: .65rem 1.75rem;
   border-radius: 50px;
   border: none;
-  transition: var(--transition);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  animation: btnColorCycle 4s ease-in-out infinite;
 }
 .pk-btn-primary:hover {
-  background: #0d7a3a;
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(17,153,72,.35);
+  animation-play-state: paused;
+}
+@keyframes btnColorCycle {
+  0%,100% { background: #119948; box-shadow: 0 8px 24px rgba(17,153,72,.4); }
+  25%      { background: #FFC431; box-shadow: 0 8px 24px rgba(255,196,49,.4); }
+  50%      { background: #6999FA; box-shadow: 0 8px 24px rgba(105,153,250,.4); }
+  75%      { background: #FE3ABB; box-shadow: 0 8px 24px rgba(254,58,187,.4); }
 }
 
 .pk-btn-whatsapp {
@@ -151,6 +165,50 @@ section, div[id] { scroll-margin-top: 80px; }
   color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(37,211,102,.35);
+}
+
+.pk-btn-saibamais {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: .95rem;
+  padding: .6rem 1.5rem;
+  border-radius: 50px;
+  border: 2.5px solid var(--dark);
+  color: var(--dark);
+  background: transparent;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  position: relative;
+  overflow: hidden;
+  transition: color .3s ease, border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+  animation: btnColorCycle 4s ease-in-out infinite;
+  background-clip: padding-box;
+}
+.pk-btn-saibamais::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  opacity: 0;
+  transition: opacity .3s ease;
+  animation: btnColorCycle 4s ease-in-out infinite;
+}
+.pk-btn-saibamais .pk-btn-arrow {
+  display: inline-flex;
+  transition: transform .3s ease;
+}
+.pk-btn-saibamais:hover {
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(17,153,72,.3);
+  animation-play-state: paused;
+  background: #119948;
+}
+.pk-btn-saibamais:hover .pk-btn-arrow {
+  transform: translateX(4px);
 }
 
 .pk-btn-cta-white {
@@ -945,6 +1003,48 @@ section, div[id] { scroll-margin-top: 80px; }
 .pk-footer-legal-links span { color: rgba(255,255,255,.25); }
 
 /* ═══════════════════════════════════════════════════
+   PAGE HERO (subpáginas)
+═══════════════════════════════════════════════════ */
+.pk-page-hero {
+  padding: 130px 0 80px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #119948 0%, #0a5a2a 100%);
+  color: #fff;
+}
+.pk-page-hero--pink   { background: linear-gradient(135deg, #FE3ABB 0%, #a81478 100%); }
+.pk-page-hero--blue   { background: linear-gradient(135deg, #6999FA 0%, #2e55c4 100%); }
+.pk-page-hero--green  { background: linear-gradient(135deg, #119948 0%, #0a5a2a 100%); }
+.pk-page-hero--yellow { background: linear-gradient(135deg, #FFC431 0%, #b07500 100%); }
+.pk-page-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #fff;
+}
+.pk-page-hero-sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,.85);
+  max-width: 600px;
+  margin: .75rem auto 0;
+}
+.pk-page-hero .pk-wave-bottom {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+}
+.pk-breadcrumb {
+  font-size: .875rem;
+  color: rgba(255,255,255,.7);
+  margin-bottom: .75rem;
+}
+.pk-breadcrumb a { color: rgba(255,255,255,.85); text-decoration: none; }
+.pk-breadcrumb a:hover { color: #fff; }
+.pk-breadcrumb span { margin: 0 .35rem; }
+
+/* ═══════════════════════════════════════════════════
    SCROLL TO TOP
 ═══════════════════════════════════════════════════ */
 .pk-scroll-top {
@@ -954,7 +1054,6 @@ section, div[id] { scroll-margin-top: 80px; }
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  background: var(--green);
   color: #fff;
   border: none;
   font-size: 1.2rem;
@@ -962,12 +1061,12 @@ section, div[id] { scroll-margin-top: 80px; }
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(17,153,72,.4);
   z-index: 9998;
   opacity: 0;
   transform: translateY(16px);
   pointer-events: none;
-  transition: opacity .3s ease, transform .3s ease, background .2s ease;
+  transition: opacity .3s ease, transform .3s ease;
+  animation: btnColorCycle 4s ease-in-out infinite;
 }
 .pk-scroll-top.visible {
   opacity: 1;
@@ -975,39 +1074,8 @@ section, div[id] { scroll-margin-top: 80px; }
   pointer-events: auto;
 }
 .pk-scroll-top:hover {
-  background: #0d7a3a;
   transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(17,153,72,.5);
-}
-
-/* ═══════════════════════════════════════════════════
-   FLOATING WHATSAPP
-═══════════════════════════════════════════════════ */
-.pk-float-wa {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 60px; height: 60px;
-  border-radius: 50%;
-  background: #25d366;
-  color: #fff;
-  font-size: 1.7rem;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 8px 28px rgba(37,211,102,.5);
-  z-index: 9999;
-  text-decoration: none;
-  transition: var(--transition);
-  animation: waPulse 2s ease-in-out infinite;
-}
-.pk-float-wa:hover {
-  background: #1da851;
-  color: #fff;
-  transform: scale(1.12);
-  animation: none;
-}
-@keyframes waPulse {
-  0%,100% { box-shadow: 0 8px 28px rgba(37,211,102,.5); }
-  50%      { box-shadow: 0 8px 48px rgba(37,211,102,.8); }
+  animation-play-state: paused;
 }
 
 /* ═══════════════════════════════════════════════════

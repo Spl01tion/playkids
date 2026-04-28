@@ -18,7 +18,8 @@
   const hero = document.getElementById('inicio');
 
   function toggleNavScrolled() {
-    const heroBottom = hero ? hero.offsetTop + hero.offsetHeight - 80 : 80;
+    if (!hero) { nav.classList.add('scrolled'); return; }
+    const heroBottom = hero.offsetTop + hero.offsetHeight - 80;
     if (window.scrollY > heroBottom || window.scrollY > 80) {
       nav.classList.add('scrolled');
     } else {
@@ -121,5 +122,9 @@
       contactForm.reset();
     });
   }
+
+  /* ── Current Year ───────────────────────────────── */
+  const yearEl = document.getElementById('currentYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 })();
