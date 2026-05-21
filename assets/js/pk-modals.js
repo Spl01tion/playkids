@@ -224,7 +224,7 @@
     return row2(mfTxt('fer-nome', 'Nome da criança *'), mfTxt('fer-nasc', 'Data de nascimento *', 'date')) +
       mfTxt('fer-data', 'Data pretendida *', 'date') +
       mfTxt('fer-morada', 'Endereço', 'text', 'Rua, nº, cidade') +
-      mfTxt('fer-nutente', 'Nº de utente de saúde', 'text') +
+      mfTxt('fer-nutente', 'Nº de utente', 'text') +
       mfTxa('fer-obs', 'Observações importantes', 'Necessidades especiais, condições médicas...') +
       divider() +
       subtitle('🏊 Saúde') +
