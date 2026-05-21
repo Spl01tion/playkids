@@ -531,6 +531,66 @@ section, div[id] { scroll-margin-top: 80px; }
 .tag-yellow { background: var(--yellow-light); color: #b58200;       border: 1.5px solid var(--yellow); }
 .tag-blue   { background: var(--blue-light);   color: #3366d6;       border: 1.5px solid var(--blue);   }
 
+/* ── Lanche block (abaixo da imagem de Festas) ────── */
+.pk-lanche-block {
+  background: var(--green-light);
+  border: 1.5px solid #b2dfcc;
+  border-radius: 14px;
+  padding: .85rem 1rem;
+}
+.pk-lanche-hdr {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  margin-bottom: .65rem;
+}
+.pk-lanche-hdr strong {
+  font-family: var(--font-display);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--green);
+}
+.pk-lanche-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  font-size: .85rem;
+  flex-shrink: 0;
+}
+.pk-lanche-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+.pk-lanche-chips span {
+  background: #fff;
+  border: 1px solid #b2dfcc;
+  color: #2e7d52;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: .2rem .65rem;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+.pk-lanche-star {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  background: var(--yellow-light);
+  border: 1.5px solid var(--yellow);
+  border-radius: 10px;
+  padding: .6rem .9rem;
+  font-size: .8rem;
+  color: #7a5200;
+}
+.pk-lanche-star i { color: var(--yellow); font-size: .9rem; flex-shrink: 0; }
+.pk-lanche-star strong { color: #9a6c00; }
+
 .pk-service-title {
   font-family: var(--font-display);
   font-size: clamp(1.7rem, 3.5vw, 2.4rem);
@@ -559,8 +619,12 @@ section, div[id] { scroll-margin-top: 80px; }
 
 .pk-divider {
   border: none;
-  border-top: 2px dashed #e5e7eb;
+  height: 8px;
   margin: 1rem 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='8'%3E%3Cpath d='M0,4 Q5,0 10,4 Q15,8 20,4' fill='none' stroke='%23ccc' stroke-width='1.5' stroke-dasharray='3,2'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 20px 8px;
+  background-position: center;
 }
 
 /* ── FEATURES GRID ────────────────────────────────── */
@@ -684,11 +748,47 @@ section, div[id] { scroll-margin-top: 80px; }
   padding: 2rem 1.75rem;
   background: #fff;
   border: 2px solid #f0f0f0;
-  height: 100%;
   transition: var(--transition);
   box-shadow: 0 4px 16px rgba(0,0,0,.06);
 }
 .pk-space-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--green); }
+
+.pk-space-card--rich { display: flex; flex-direction: column; height: 100%; }
+
+.pk-space-card-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.pk-space-card-top .space-icon { margin-bottom: 0; flex-shrink: 0; }
+.pk-space-card-top h5 { margin-bottom: .15rem; }
+.pk-space-subtitle { font-size: .82rem; color: var(--gray); margin: 0; }
+
+.pk-space-features {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  flex: 1;
+}
+.pk-space-features li {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  font-size: .9rem;
+  color: #444;
+}
+.pk-sf-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.pk-sf-dot.green  { background: var(--green); }
+.pk-sf-dot.yellow { background: #e6a817; }
+.pk-sf-dot.blue   { background: #2952c4; }
 
 .space-icon {
   width: 72px; height: 72px;

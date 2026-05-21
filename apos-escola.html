@@ -33,7 +33,7 @@
         <li class="nav-item"><a class="nav-link" href="index.html#equipa">Nossa Equipa</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
         <li class="nav-item ms-lg-3">
-          <a class="btn pk-btn-whatsapp" href="https://wa.me/351XXXXXXXXX?text=Olá%20PlayKids!%20Quero%20saber%20mais%20sobre%20o%20programa%20Após%20Escola." target="_blank">
+          <a class="btn pk-btn-whatsapp" href="https://wa.me/351937608823?text=Olá%20PlayKids!%20Quero%20saber%20mais%20sobre%20o%20programa%20Após%20Escola." target="_blank">
             <i class="bi bi-whatsapp me-1"></i> Fale Connosco
           </a>
         </li>
@@ -49,9 +49,14 @@
     <span class="pk-badge mb-3">📚 Faixa etária: 4 – 12 anos</span>
     <h1 class="pk-page-hero-title">Programa <span style="color:var(--yellow)">Após Escola</span></h1>
     <p class="pk-page-hero-sub">O complemento perfeito ao dia escolar. Um ambiente seguro, acolhedor e cheio de atividades para as suas crianças.</p>
-    <a href="https://wa.me/351XXXXXXXXX?text=Olá!%20Quero%20inscrever%20o%20meu%20filho%20no%20programa%20Após%20Escola." target="_blank" class="btn pk-btn-primary mt-4">
-      <i class="bi bi-whatsapp me-2"></i>Inscrever Agora
-    </a>
+    <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
+      <button type="button" class="btn pk-btn-primary" onclick="pkModal.agendar('apos-escola')">
+        <i class="bi bi-calendar-check me-2"></i>Agendar Agora
+      </button>
+      <button type="button" class="btn" style="background:#fff;color:var(--dark);border:2px solid #fff;border-radius:50px;font-weight:700;padding:.5rem 1.4rem;" onclick="pkModal.orcamento()">
+        <i class="bi bi-file-earmark-text me-2"></i>Pedir Orçamento
+      </button>
+    </div>
   </div>
   <div class="pk-wave-bottom">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -186,9 +191,14 @@
     <span class="pk-section-tag">📚 Inscrições abertas</span>
     <h2 class="pk-section-title">Garanta o lugar do seu <span class="text-green">filho</span></h2>
     <p class="pk-text mx-auto mb-4" style="max-width:520px">As vagas são limitadas. Inscreva já o seu filho e dê-lhe as melhores tardes da semana!</p>
-    <a href="https://wa.me/351XXXXXXXXX?text=Olá!%20Quero%20inscrever%20o%20meu%20filho%20no%20programa%20Após%20Escola%20da%20PlayKids." target="_blank" class="btn pk-btn-whatsapp btn-lg">
-      <i class="bi bi-whatsapp me-2"></i> Inscrever via WhatsApp
-    </a>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <button type="button" class="btn pk-btn-primary btn-lg" onclick="pkModal.agendar('apos-escola')">
+        <i class="bi bi-calendar-check me-2"></i> Agendar Agora
+      </button>
+      <button type="button" class="btn pk-btn-whatsapp btn-lg" onclick="pkModal.orcamento()">
+        <i class="bi bi-file-earmark-text me-2"></i> Pedir Orçamento
+      </button>
+    </div>
     <div class="mt-3"><a href="index.html#servicos" class="text-muted" style="font-size:.9rem">← Ver todos os serviços</a></div>
   </div>
 </section>
@@ -203,7 +213,7 @@
           <a href="#" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
           <a href="#" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
           <a href="#" class="social-btn" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
-          <a href="https://wa.me/351XXXXXXXXX" target="_blank" class="social-btn social-wa" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://wa.me/351937608823" target="_blank" class="social-btn social-wa" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
         </div>
       </div>
       <div class="col-sm-6 col-lg-2 offset-lg-1">
@@ -216,18 +226,34 @@
           <li><a href="insuflaveis.html">Insufláveis &amp; Trampolins</a></li>
         </ul>
       </div>
-      <div class="col-lg-3 offset-lg-1">
+      <div class="col-sm-6 col-lg-2">
+        <h6 class="pk-footer-title">Legal</h6>
+        <ul class="pk-footer-links">
+          <li><a href="termos.html">Termos &amp; Condições</a></li>
+          <li><a href="privacidade.html">Política de Privacidade</a></li>
+          <li><a href="seguranca.html">Políticas de Segurança</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
         <h6 class="pk-footer-title">Contacto</h6>
         <ul class="pk-footer-contact">
-          <li><i class="bi bi-telephone-fill"></i> <a href="tel:+351XXXXXXXXX">+351 XXX XXX XXX</a></li>
+          <li><i class="bi bi-telephone-fill"></i> <a href="tel:+351937608823">+351 937 608 823</a></li>
           <li><i class="bi bi-envelope-fill"></i> <a href="mailto:geral@playkids.pt">geral@playkids.pt</a></li>
-          <li><i class="bi bi-geo-alt-fill"></i> <span>Rua Exemplo, 123, Lisboa, Portugal</span></li>
+          <li><i class="bi bi-geo-alt-fill"></i> <a href="https://maps.google.com/?q=Rua+Manoel+Mafra+35A+Caldas+da+Rainha" target="_blank">Centro: Rua Manoel Mafra, 35 A</a></li>
+          <li><i class="bi bi-geo-alt-fill"></i> <a href="https://maps.google.com/?q=Rua+António+de+Oliveira+40B+Caldas+da+Rainha" target="_blank">Zona Ind.: Rua António de Oliveira, 40B</a></li>
           <li><i class="bi bi-clock-fill"></i> <span>Seg – Sex: 08h00 – 19h00</span></li>
         </ul>
       </div>
     </div>
     <div class="pk-footer-bottom">
       <p>&copy; <span id="currentYear"></span> PlayKids. Todos os direitos reservados.</p>
+      <p class="pk-footer-legal-links">
+        <a href="termos.html">Termos &amp; Condições</a>
+        <span>·</span>
+        <a href="privacidade.html">Política de Privacidade</a>
+        <span>·</span>
+        <a href="seguranca.html">Políticas de Segurança</a>
+      </p>
     </div>
   </div>
 </footer>
@@ -236,5 +262,7 @@
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/vendor/aos/aos.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/pk-modals.js"></script>
+    <script src="assets/js/pk-agendar.js"></script>
 </body>
 </html>

@@ -33,7 +33,7 @@
         <li class="nav-item"><a class="nav-link" href="index.html#equipa">Nossa Equipa</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#contacto">Contacto</a></li>
         <li class="nav-item ms-lg-3">
-          <a class="btn pk-btn-whatsapp" href="https://wa.me/351XXXXXXXXX?text=Olá%20PlayKids!%20Quero%20saber%20mais%20sobre%20as%20Festas%20de%20Aniversário." target="_blank">
+          <a class="btn pk-btn-whatsapp" href="https://wa.me/351937608823?text=Olá%20PlayKids!%20Quero%20saber%20mais%20sobre%20as%20Festas%20de%20Aniversário." target="_blank">
             <i class="bi bi-whatsapp me-1"></i> Fale Connosco
           </a>
         </li>
@@ -49,9 +49,14 @@
     <span class="pk-badge mb-3">🎂 Faixa etária: 1 – 12 anos</span>
     <h1 class="pk-page-hero-title">Festas de <span style="color:var(--yellow)">Aniversário</span> Inesquecíveis</h1>
     <p class="pk-page-hero-sub">Tornamos o dia mais especial do ano ainda mais mágico. Decoração temática, animação, lanche e muito mais!</p>
-    <a href="https://wa.me/351XXXXXXXXX?text=Olá!%20Quero%20marcar%20uma%20festa%20de%20aniversário." target="_blank" class="btn pk-btn-primary mt-4">
-      <i class="bi bi-whatsapp me-2"></i>Pedir Orçamento
-    </a>
+    <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
+      <button type="button" class="btn pk-btn-primary" onclick="pkModal.agendar('festas')">
+        <i class="bi bi-calendar-check me-2"></i>Agendar Agora
+      </button>
+      <button type="button" class="btn" style="background:#fff;color:var(--dark);border:2px solid #fff;border-radius:50px;font-weight:700;padding:.5rem 1.4rem;" onclick="pkModal.orcamento()">
+        <i class="bi bi-file-earmark-text me-2"></i>Pedir Orçamento
+      </button>
+    </div>
   </div>
   <div class="pk-wave-bottom">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +70,30 @@
   <div class="container py-5">
     <div class="row align-items-center gy-5">
       <div class="col-lg-5">
-        <img src="assets/img/servicos/festa_aniversario.jpg" alt="Festa de Aniversário" class="img-fluid rounded-4 shadow" />
+        <div class="pk-service-img-wrap">
+          <img src="assets/img/servicos/festa_aniversario.jpg" alt="Festa de Aniversário" class="pk-service-img" />
+        </div>
+        <div class="pk-lanche-block mt-3">
+          <div class="pk-lanche-hdr">
+            <span class="pk-lanche-icon"><i class="bi bi-cup-straw"></i></span>
+            <strong>Inclui Lanche</strong>
+          </div>
+          <div class="pk-lanche-chips">
+            <span>🍟 Batata frita</span>
+            <span>🍿 Pipoca</span>
+            <span>🍕 Pizza</span>
+            <span>🍪 Oreo</span>
+            <span>🍮 Gelatina</span>
+            <span>🥟 Croquetes</span>
+            <span>💧 Água</span>
+            <span>🍊 Sumo de laranja</span>
+            <span>🧃 Ice Tea Manga</span>
+          </div>
+        </div>
+        <div class="pk-lanche-star mt-2">
+          <i class="bi bi-star-fill"></i>
+          <span><strong>Aniversariante não paga</strong>!</span>
+        </div>
       </div>
       <div class="col-lg-6 offset-lg-1">
         <span class="pk-section-tag">✨ A nossa promessa</span>
@@ -117,9 +145,9 @@
             <li><i class="bi bi-x-circle text-muted"></i> <span class="text-muted">Lanche por conta dos pais</span></li>
           </ul>
           <p class="pk-text" style="font-size:.8rem;color:var(--gray)">Criança extra: 10€</p>
-          <a href="https://wa.me/351937608823?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Pacote%20Kids." target="_blank" class="btn pk-btn-whatsapp mt-auto w-100 justify-content-center">
-            <i class="bi bi-whatsapp me-1"></i> Pedir Orçamento
-          </a>
+          <button type="button" class="btn pk-btn-primary mt-auto w-100 justify-content-center" onclick="pkModal.agendar('festas')">
+            <i class="bi bi-calendar-check me-1"></i> Agendar Agora
+          </button>
         </div>
       </div>
 
@@ -138,10 +166,10 @@
             <li><i class="bi bi-check2-circle"></i> Lanche completo incluído</li>
             <li><i class="bi bi-check2-circle"></i> Até 16 crianças</li>
           </ul>
-          <p class="pk-text" style="font-size:.8rem;color:var(--gray)">Criança extra: 15€</p>
-          <a href="https://wa.me/351937608823?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Pacote%20Friends." target="_blank" class="btn pk-btn-whatsapp mt-auto w-100 justify-content-center">
-            <i class="bi bi-whatsapp me-1"></i> Pedir Orçamento
-          </a>
+          <p class="pk-text" style="font-size:.8rem;color:var(--gray)">Criança extra: 14€</p>
+          <button type="button" class="btn pk-btn-primary mt-auto w-100 justify-content-center" onclick="pkModal.agendar('festas')">
+            <i class="bi bi-calendar-check me-1"></i> Agendar Agora
+          </button>
         </div>
       </div>
 
@@ -160,10 +188,10 @@
             <li><i class="bi bi-check2-circle"></i> Até 16 crianças</li>
             <li><i class="bi bi-x-circle text-muted"></i> <span class="text-muted">Lanche por conta dos pais</span></li>
           </ul>
-          <p class="pk-text" style="font-size:.8rem;color:var(--gray)">Criança extra: 15€</p>
-          <a href="https://wa.me/351937608823?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Pacote%20Adventure." target="_blank" class="btn pk-btn-whatsapp mt-auto w-100 justify-content-center">
-            <i class="bi bi-whatsapp me-1"></i> Pedir Orçamento
-          </a>
+          <p class="pk-text" style="font-size:.8rem;color:var(--gray)">Criança extra: 12€</p>
+          <button type="button" class="btn pk-btn-primary mt-auto w-100 justify-content-center" onclick="pkModal.agendar('festas')">
+            <i class="bi bi-calendar-check me-1"></i> Agendar Agora
+          </button>
         </div>
       </div>
 
@@ -182,10 +210,10 @@
             <li><i class="bi bi-check2-circle"></i> Lanche completo incluído</li>
             <li><i class="bi bi-check2-circle"></i> Até 16 crianças</li>
           </ul>
-          <p class="pk-text" style="font-size:.8rem;color:var(--gray)">Criança extra: 20€</p>
-          <a href="https://wa.me/351937608823?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Pacote%20Power." target="_blank" class="btn pk-btn-whatsapp mt-auto w-100 justify-content-center">
-            <i class="bi bi-whatsapp me-1"></i> Pedir Orçamento
-          </a>
+          <p class="pk-text" style="font-size:.8rem;color:var(--gray)">Criança extra: 16€</p>
+          <button type="button" class="btn pk-btn-primary mt-auto w-100 justify-content-center" onclick="pkModal.agendar('festas')">
+            <i class="bi bi-calendar-check me-1"></i> Agendar Agora
+          </button>
         </div>
       </div>
 
@@ -218,9 +246,9 @@
             </div>
           </div>
           <p class="pk-text mt-2 mb-3" style="font-size:.8rem;color:var(--gray)">Espaço exclusivo para a sua festa</p>
-          <a href="https://wa.me/351937608823?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Pacote%20Premium." target="_blank" class="btn pk-btn-whatsapp w-100 justify-content-center">
-            <i class="bi bi-whatsapp me-1"></i> Pedir Orçamento
-          </a>
+          <button type="button" class="btn pk-btn-primary w-100 justify-content-center" onclick="pkModal.agendar('festas')">
+            <i class="bi bi-calendar-check me-1"></i> Agendar Agora
+          </button>
         </div>
       </div>
 
@@ -288,6 +316,12 @@
       <p class="pk-text mx-auto" style="max-width:500px">Adicione detalhes especiais à sua festa para torná-la ainda mais única.</p>
     </div>
     <div class="row g-3 justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="pk-space-card d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-palette-fill text-pink me-2"></i>Decoração temática simples</span>
+          <strong class="text-pink">60€</strong>
+        </div>
+      </div>
       <div class="col-md-6 col-lg-4">
         <div class="pk-space-card d-flex justify-content-between align-items-center">
           <span><i class="bi bi-palette-fill text-pink me-2"></i>Decoração temática</span>
@@ -430,9 +464,14 @@
     <span class="pk-section-tag">🎉 Pronto para celebrar?</span>
     <h2 class="pk-section-title">Vamos criar uma festa <span class="text-pink">inesquecível</span>!</h2>
     <p class="pk-text mx-auto mb-4" style="max-width:520px">Contacte-nos agora e receba um orçamento personalizado sem compromisso.</p>
-    <a href="https://wa.me/351XXXXXXXXX?text=Olá!%20Quero%20marcar%20uma%20festa%20de%20aniversário%20na%20PlayKids!" target="_blank" class="btn pk-btn-whatsapp btn-lg">
-      <i class="bi bi-whatsapp me-2"></i> Pedir Orçamento via WhatsApp
-    </a>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <button type="button" class="btn pk-btn-primary btn-lg" onclick="pkModal.agendar('festas')">
+        <i class="bi bi-calendar-check me-2"></i> Agendar Agora
+      </button>
+      <button type="button" class="btn pk-btn-whatsapp btn-lg" onclick="pkModal.orcamento()">
+        <i class="bi bi-file-earmark-text me-2"></i> Pedir Orçamento
+      </button>
+    </div>
     <div class="mt-3">
       <a href="index.html#servicos" class="text-muted" style="font-size:.9rem">← Ver todos os serviços</a>
     </div>
@@ -449,7 +488,7 @@
           <a href="#" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
           <a href="#" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
           <a href="#" class="social-btn" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
-          <a href="https://wa.me/351XXXXXXXXX" target="_blank" class="social-btn social-wa" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://wa.me/351937608823" target="_blank" class="social-btn social-wa" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
         </div>
       </div>
       <div class="col-sm-6 col-lg-2 offset-lg-1">
@@ -462,18 +501,34 @@
           <li><a href="insuflaveis.html">Insufláveis &amp; Trampolins</a></li>
         </ul>
       </div>
-      <div class="col-lg-3 offset-lg-1">
+      <div class="col-sm-6 col-lg-2">
+        <h6 class="pk-footer-title">Legal</h6>
+        <ul class="pk-footer-links">
+          <li><a href="termos.html">Termos &amp; Condições</a></li>
+          <li><a href="privacidade.html">Política de Privacidade</a></li>
+          <li><a href="seguranca.html">Políticas de Segurança</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
         <h6 class="pk-footer-title">Contacto</h6>
         <ul class="pk-footer-contact">
-          <li><i class="bi bi-telephone-fill"></i> <a href="tel:+351XXXXXXXXX">+351 XXX XXX XXX</a></li>
+          <li><i class="bi bi-telephone-fill"></i> <a href="tel:+351937608823">+351 937 608 823</a></li>
           <li><i class="bi bi-envelope-fill"></i> <a href="mailto:geral@playkids.pt">geral@playkids.pt</a></li>
-          <li><i class="bi bi-geo-alt-fill"></i> <span>Rua Exemplo, 123, Lisboa, Portugal</span></li>
+          <li><i class="bi bi-geo-alt-fill"></i> <a href="https://maps.google.com/?q=Rua+Manoel+Mafra+35A+Caldas+da+Rainha" target="_blank">Centro: Rua Manoel Mafra, 35 A</a></li>
+          <li><i class="bi bi-geo-alt-fill"></i> <a href="https://maps.google.com/?q=Rua+António+de+Oliveira+40B+Caldas+da+Rainha" target="_blank">Zona Ind.: Rua António de Oliveira, 40B</a></li>
           <li><i class="bi bi-clock-fill"></i> <span>Seg – Sex: 08h00 – 19h00</span></li>
         </ul>
       </div>
     </div>
     <div class="pk-footer-bottom">
       <p>&copy; <span id="currentYear"></span> PlayKids. Todos os direitos reservados.</p>
+      <p class="pk-footer-legal-links">
+        <a href="termos.html">Termos &amp; Condições</a>
+        <span>·</span>
+        <a href="privacidade.html">Política de Privacidade</a>
+        <span>·</span>
+        <a href="seguranca.html">Políticas de Segurança</a>
+      </p>
     </div>
   </div>
 </footer>
@@ -483,5 +538,7 @@
 <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/vendor/aos/aos.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/pk-modals.js"></script>
+<script src="assets/js/pk-agendar.js"></script>
 </body>
 </html>
