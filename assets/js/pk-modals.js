@@ -211,7 +211,7 @@
 
   function bodyFestas() {
     return row2(mfTxt('f-nome', 'Nome do aniversariante *'), mfTxt('f-anos', 'Anos que faz *', 'number', 'ex: 6')) +
-      row2(mfTxt('f-data', 'Data da festa *', 'date'), mfSel('f-unidade', 'Unidade *', ['Centro – Rua Manoel Mafra, 35 A', 'Zona Industrial – Rua António de Oliveira, 40B'])) +
+      row2(mfTxt('f-data', 'Data da festa *', 'date'), mfSel('f-unidade', 'Unidade *', ['Centro – Rua Manuel Mafra, 35 A', 'Zona Industrial – Rua António de Oliveira, 40B'])) +
       mfSel('f-pacote', 'Pacote', ['Kids – 175€', 'Friends – 255€', 'Adventure – 255€', 'Power – 335€', 'Premium – 750€']) +
       mfTxt('f-ncriancas-extra', 'Nº de crianças extra', 'number', 'ex: 3') +
       mfTxt('f-tema', 'Tema da festa', 'text', 'ex: Princesas, Dinossauros, Marvel...') +
