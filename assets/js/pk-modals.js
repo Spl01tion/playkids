@@ -71,6 +71,9 @@
     'justify-content:center;gap:.5rem;margin-top:1.2rem;transition:opacity .2s;',
     'background:#25d366;color:#fff;}',
     '.pk-modal-submit:hover{opacity:.88;}',
+    '.pk-modal-submit:disabled{opacity:.65;cursor:not-allowed;}',
+    '.pk-spin{display:inline-block;width:1em;height:1em;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:pk-spin .7s linear infinite;}',
+    '@keyframes pk-spin{to{transform:rotate(360deg)}}',
     '@media(max-width:480px){.pk-mf-row.col2{grid-template-columns:1fr;}',
     '#pk-overlay{padding:.5rem;}.pk-modal-box{max-height:calc(100vh - 1rem);}}'
   ].join('');
@@ -435,15 +438,91 @@
     if (v('orc-parent')) msg += '*Parentesco:* ' + v('orc-parent') + '\n';
     if (v('orc-msg'))   msg += '*Mensagem:* ' + v('orc-msg');
 
-    // Enviar também por email (fire-and-forget)
+    // Construir detalhes limpos para o email (sem emojis nem formatação WhatsApp)
+    var svcLabels = { 'festas': 'Festas de Aniversário', 'ferias': 'Tempo de Férias', 'apos-escola': 'Após Escola', 'transporte': 'Transporte Escolar', 'insuflaveis': 'Insufláveis' };
+    var det = '';
+    selected.forEach(function (key) {
+      det += '-- ' + (svcLabels[key] || key) + ' --\n';
+      switch (key) {
+        case 'festas':
+          if (v('f-nome'))             det += 'Aniversariante: ' + v('f-nome') + '\n';
+          if (v('f-anos'))             det += 'Anos: ' + v('f-anos') + '\n';
+          if (v('f-data'))             det += 'Data: ' + v('f-data') + '\n';
+          if (v('f-unidade'))          det += 'Unidade: ' + v('f-unidade') + '\n';
+          if (v('f-pacote'))           det += 'Pacote: ' + v('f-pacote') + '\n';
+          if (v('f-ncriancas-extra'))  det += 'Crianças extra: ' + v('f-ncriancas-extra') + '\n';
+          if (v('f-tema'))             det += 'Tema: ' + v('f-tema') + '\n';
+          var ex2 = cVals('f-extras');
+          if (ex2.length)              det += 'Extras: ' + ex2.join(', ') + '\n';
+          break;
+        case 'ferias':
+          if (v('fer-nome'))           det += 'Criança: ' + v('fer-nome') + '\n';
+          if (v('fer-nasc'))           det += 'Data nasc.: ' + v('fer-nasc') + '\n';
+          if (v('fer-data'))           det += 'Data pretendida: ' + v('fer-data') + '\n';
+          if (v('fer-morada'))         det += 'Morada: ' + v('fer-morada') + '\n';
+          if (v('fer-nutente'))        det += 'Nº utente: ' + v('fer-nutente') + '\n';
+          if (r('fer-nadar'))          det += 'Sabe nadar: ' + r('fer-nadar') + '\n';
+          if (r('fer-alerg'))          det += 'Alérgico: ' + r('fer-alerg') + '\n';
+          if (v('fer-alerg-qual'))     det += 'Qual alergia: ' + v('fer-alerg-qual') + '\n';
+          if (r('fer-med'))            det += 'Medicação: ' + r('fer-med') + '\n';
+          if (v('fer-med-qual'))       det += 'Qual medicação: ' + v('fer-med-qual') + '\n';
+          if (v('fer-obs'))            det += 'Observações: ' + v('fer-obs') + '\n';
+          var fauto2 = cVals('fer-auto');
+          if (fauto2.length)           det += 'Autorizações: ' + fauto2.join(', ') + '\n';
+          break;
+        case 'apos-escola':
+          if (v('ae-nome'))            det += 'Criança: ' + v('ae-nome') + '\n';
+          if (v('ae-idade'))           det += 'Idade: ' + v('ae-idade') + ' anos\n';
+          if (v('ae-escola'))          det += 'Escola: ' + v('ae-escola') + '\n';
+          if (v('ae-horario'))         det += 'Horário de saída: ' + v('ae-horario') + '\n';
+          if (r('ae-transp'))          det += 'Transporte: ' + r('ae-transp') + '\n';
+          if (r('ae-med'))             det += 'Medicação: ' + r('ae-med') + '\n';
+          if (v('ae-med-qual'))        det += 'Qual medicação: ' + v('ae-med-qual') + '\n';
+          var dias2 = cVals('ae-dias');
+          if (dias2.length)            det += 'Dias: ' + dias2.join(', ') + '\n';
+          break;
+        case 'transporte':
+          if (v('tr-nome'))            det += 'Criança: ' + v('tr-nome') + '\n';
+          if (v('tr-idade'))           det += 'Idade: ' + v('tr-idade') + ' anos\n';
+          if (v('tr-escola'))          det += 'Escola: ' + v('tr-escola') + '\n';
+          if (v('tr-morada'))          det += 'Morada: ' + v('tr-morada') + '\n';
+          if (v('tr-trajeto'))         det += 'Trajeto: ' + v('tr-trajeto') + '\n';
+          break;
+        case 'insuflaveis':
+          if (v('ins-nome'))           det += 'Nome: ' + v('ins-nome') + '\n';
+          if (v('ins-tel'))            det += 'Contacto: ' + v('ins-tel') + '\n';
+          if (v('ins-data'))           det += 'Data: ' + v('ins-data') + '\n';
+          if (v('ins-duracao'))        det += 'Duração: ' + v('ins-duracao') + '\n';
+          if (v('ins-ncriancas'))      det += 'Nº crianças: ' + v('ins-ncriancas') + '\n';
+          if (v('ins-idades'))         det += 'Média de idades: ' + v('ins-idades') + '\n';
+          if (v('ins-morada'))         det += 'Morada de montagem: ' + v('ins-morada') + '\n';
+          if (v('ins-obs'))            det += 'Observações: ' + v('ins-obs') + '\n';
+          break;
+      }
+      det += '\n';
+    });
+
+    // Desabilitar botão enquanto envia email
+    var btn = document.querySelector('.pk-modal-submit');
+    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="pk-spin"></span> A enviar…'; }
+
     var fd = new FormData();
     fd.append('nome',     v('orc-nome'));
     fd.append('telefone', v('orc-tel'));
     fd.append('email',    v('orc-email') || '');
-    fd.append('mensagem', msg);
-    fetch('forms/orcamento-email.php', { method: 'POST', body: fd }).catch(function () {});
+    fd.append('servicos', selected.join(', '));
+    fd.append('detalhes', det.trim());
+    fd.append('obs',      v('orc-msg') || '');
+    var emailUrl = window.location.pathname.replace(/\/[^/]*$/, '') + '/forms/orcamento-email.php';
 
-    sendWpp(msg);
+    fetch(emailUrl, { method: 'POST', body: fd })
+      .then(function(res) { return res.json(); })
+      .then(function(json) { if (json.status !== 'success') console.warn('[PlayKids] email:', json); })
+      .catch(function(err) { console.warn('[PlayKids] email error:', err); })
+      .finally(function() {
+        if (btn) { btn.disabled = false; btn.innerHTML = '<i class="bi bi-whatsapp"></i> Enviar via WhatsApp'; }
+        sendWpp(msg);
+      });
   };
 
   // ── Public API ────────────────────────────────────────────

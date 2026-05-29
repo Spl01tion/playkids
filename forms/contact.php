@@ -88,6 +88,9 @@ try {
   $mail->setFrom(SMTP_USER, MAIL_NOME);
   $mail->addAddress(MAIL_PARA, MAIL_NOME);
   $mail->addReplyTo($email, $nome);
+  $mail->XMailer = 'PlayKids Mailer';
+  $mail->addCustomHeader('X-Priority', '3');
+  $mail->addCustomHeader('X-Auto-Response-Suppress', 'OOF, DR, RN, NRN, AutoReply');
 
   if (file_exists($logoPath)) {
     $mail->addEmbeddedImage($logoPath, 'pk_logo', 'pk_logo.png', 'base64', 'image/png');
