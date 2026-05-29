@@ -435,6 +435,14 @@
     if (v('orc-parent')) msg += '*Parentesco:* ' + v('orc-parent') + '\n';
     if (v('orc-msg'))   msg += '*Mensagem:* ' + v('orc-msg');
 
+    // Enviar também por email (fire-and-forget)
+    var fd = new FormData();
+    fd.append('nome',     v('orc-nome'));
+    fd.append('telefone', v('orc-tel'));
+    fd.append('email',    v('orc-email') || '');
+    fd.append('mensagem', msg);
+    fetch('forms/orcamento-email.php', { method: 'POST', body: fd }).catch(function () {});
+
     sendWpp(msg);
   };
 

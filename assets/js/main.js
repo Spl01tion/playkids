@@ -87,39 +87,38 @@
     });
   }
 
-  /* ── Contact Form (client-side feedback) ─────────── */
+  /* ── Contact Form → forms/contact.php ───────────── */
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
+    const feedback = document.getElementById('cf-feedback');
+    const submitBtn = document.getElementById('cf-submit');
+
+    contactForm.addEventListener('submit', async function (e) {
       e.preventDefault();
-      const nome     = document.getElementById('cf-nome').value.trim();
-      const email    = document.getElementById('cf-email').value.trim();
-      const mensagem = document.getElementById('cf-mensagem').value.trim();
-      const feedback = document.getElementById('cf-feedback');
+      feedback.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> A enviar…';
 
-      if (!nome || !email || !mensagem) {
+      try {
+        const res  = await fetch('forms/contact.php', { method: 'POST', body: new FormData(contactForm) });
+        const json = await res.json();
         feedback.style.display = 'block';
-        feedback.className = 'pk-cf-error';
-        feedback.innerHTML = '<i class="bi bi-exclamation-circle me-1"></i> Por favor preencha os campos obrigatórios (Nome, E-mail e Mensagem).';
-        return;
+        if (json.status === 'success') {
+          feedback.className = 'col-12 alert alert-success rounded-3';
+          feedback.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i>' + json.message;
+          contactForm.reset();
+        } else {
+          feedback.className = 'col-12 alert alert-danger rounded-3';
+          feedback.innerHTML = '<i class="bi bi-exclamation-circle-fill me-2"></i>' + json.message;
+        }
+      } catch (err) {
+        feedback.style.display = 'block';
+        feedback.className = 'col-12 alert alert-danger rounded-3';
+        feedback.innerHTML = '<i class="bi bi-exclamation-circle-fill me-2"></i> Erro de ligação. Verifique a sua internet e tente novamente.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="bi bi-send-fill me-2"></i> Enviar Mensagem';
       }
-
-      // Redireciona para WhatsApp com os dados preenchidos
-      const assunto  = document.getElementById('cf-assunto').value || 'Contacto geral';
-      const telefone = document.getElementById('cf-telefone').value.trim();
-      const texto = encodeURIComponent(
-        'Olá PlayKids! 👋\n' +
-        'Nome: ' + nome + '\n' +
-        'E-mail: ' + email + (telefone ? '\nTelefone: ' + telefone : '') + '\n' +
-        'Assunto: ' + assunto + '\n\n' +
-        mensagem
-      );
-      window.open('https://wa.me/351XXXXXXXXX?text=' + texto, '_blank');
-
-      feedback.style.display = 'block';
-      feedback.className = 'pk-cf-success';
-      feedback.innerHTML = '<i class="bi bi-check-circle me-1"></i> Mensagem enviada! Será redirecionado para o WhatsApp.';
-      contactForm.reset();
     });
   }
 

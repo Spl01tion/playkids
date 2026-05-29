@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt">
   <head>
     <meta charset="UTF-8" />
@@ -1043,7 +1043,7 @@
               <div class="pk-service-img-wrap">
                 <img
                   src="assets/img/servicos/aluguer.jpg"
-                  alt="Insufláveis e Trampolins"
+                  alt="Insufláveis"
                   class="pk-service-img"
                 />
               </div>
@@ -1119,57 +1119,152 @@
           </p>
         </div>
 
-        <!-- Vídeo principal -->
-        <div class="pk-space-video-wrap mb-4" data-aos="fade-up">
-          <!-- Substituir VIDEO_ID pelo ID do vídeo do YouTube -->
-          <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
-          <div class="pk-space-video-placeholder">
-            <i class="bi bi-play-circle-fill"></i>
-            <span>Vídeo do Espaço PlayKids</span>
-            <p>Link</p>
+        <!-- Grid de vídeos -->
+        <div class="pk-space-video-grid" data-aos="fade-up">
+
+          <!-- Centro -->
+          <div class="pk-space-vcard pk-space-vcard-centro">
+            <div class="pk-space-vcard-hdr"><i class="bi bi-geo-alt-fill"></i> Centro</div>
+            <div class="pk-vid-wrap">
+              <video preload="auto" poster="assets/videos/play_centro_thumb.jpg">
+                <source src="assets/videos/play_centro.mp4" type="video/mp4" />
+              </video>
+              <div class="pk-vid-overlay">
+                <button class="pk-vid-play" aria-label="Play/Pause"><i class="bi bi-play-fill"></i></button>
+              </div>
+              <button class="pk-vid-fs" aria-label="Ecrã inteiro"><i class="bi bi-fullscreen"></i></button>
+            </div>
           </div>
+
+          <!-- Zona Industrial -->
+          <div class="pk-space-vcard pk-space-vcard-industrial">
+            <div class="pk-space-vcard-hdr"><i class="bi bi-building"></i> Zona Industrial</div>
+            <div class="pk-vid-wrap">
+              <video preload="auto" poster="assets/videos/play_insdustrial_thumb.jpg">
+                <source src="assets/videos/play_industrial.mp4" type="video/mp4" />
+              </video>
+              <div class="pk-vid-overlay">
+                <button class="pk-vid-play" aria-label="Play/Pause"><i class="bi bi-play-fill"></i></button>
+              </div>
+              <button class="pk-vid-fs" aria-label="Ecrã inteiro"><i class="bi bi-fullscreen"></i></button>
+            </div>
+          </div>
+
+          <!-- Tempo de Férias -->
+          <div class="pk-space-vcard pk-space-vcard-ferias">
+            <div class="pk-space-vcard-hdr"><i class="bi bi-sun-fill"></i> Tempo de Férias</div>
+            <div class="pk-vid-wrap pk-vid-sm">
+              <video preload="auto" poster="assets/videos/ferias_thumb.jpg">
+                <source src="assets/videos/ferias_vid.mp4" type="video/mp4" />
+              </video>
+              <div class="pk-vid-overlay">
+                <button class="pk-vid-play" aria-label="Play/Pause"><i class="bi bi-play-fill"></i></button>
+              </div>
+              <button class="pk-vid-fs" aria-label="Ecrã inteiro"><i class="bi bi-fullscreen"></i></button>
+            </div>
+          </div>
+
+          <!-- Festas de Aniversário -->
+          <div class="pk-space-vcard pk-space-vcard-festas">
+            <div class="pk-space-vcard-hdr"><i class="bi bi-balloon-heart-fill"></i> Festas de Aniversário</div>
+            <div class="pk-vid-wrap pk-vid-sm">
+              <video preload="auto" poster="assets/videos/festa_thumb.jpg">
+                <source src="assets/videos/festas_vid.mp4" type="video/mp4" />
+              </video>
+              <div class="pk-vid-overlay">
+                <button class="pk-vid-play" aria-label="Play/Pause"><i class="bi bi-play-fill"></i></button>
+              </div>
+              <button class="pk-vid-fs" aria-label="Ecrã inteiro"><i class="bi bi-fullscreen"></i></button>
+            </div>
+          </div>
+
+          <!-- Tempo de Férias 2 -->
+          <div class="pk-space-vcard pk-space-vcard-ferias">
+            <div class="pk-space-vcard-hdr"><i class="bi bi-sun-fill"></i> Tempo de Férias</div>
+            <div class="pk-vid-wrap pk-vid-sm">
+              <video preload="auto" poster="assets/videos/ferias_vid2.jpg">
+                <source src="assets/videos/ferias_vid2.mp4" type="video/mp4" />
+              </video>
+              <div class="pk-vid-overlay">
+                <button class="pk-vid-play" aria-label="Play/Pause"><i class="bi bi-play-fill"></i></button>
+              </div>
+              <button class="pk-vid-fs" aria-label="Ecrã inteiro"><i class="bi bi-fullscreen"></i></button>
+            </div>
+          </div>
+
+          <!-- Insufláveis -->
+          <div class="pk-space-vcard pk-space-vcard-insuflaveis">
+            <div class="pk-space-vcard-hdr"><i class="bi bi-balloon-fill"></i> Insufláveis</div>
+            <div class="pk-vid-wrap pk-vid-sm">
+              <video preload="auto" poster="assets/videos/insuflavel_thumb.jpg">
+                <source src="assets/videos/insuflavel_vid.mp4" type="video/mp4" />
+              </video>
+              <div class="pk-vid-overlay">
+                <button class="pk-vid-play" aria-label="Play/Pause"><i class="bi bi-play-fill"></i></button>
+              </div>
+              <button class="pk-vid-fs" aria-label="Ecrã inteiro"><i class="bi bi-fullscreen"></i></button>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Galeria de fotos -->
-        <div class="pk-space-gallery" data-aos="fade-up" data-aos-delay="100">
-          <!-- Foto grande -->
-          <div class="pk-sg-item pk-sg-large">
-            <img
-              src="https://espacodiversaoearte.com.br/wp-content/uploads/2019/05/buffet-infantil-na-zona-norte-de-sp-salao-de-festa.jpg"
-              alt="Salão de Festas"
-            />
-            <div class="pk-sg-overlay"><span></span></div>
+        <!-- Galeria de fotos — slider -->
+        <div class="pk-gallery-outer" data-aos="fade-up" data-aos-delay="100">
+          <button class="pk-gal-btn pk-gal-prev" aria-label="Anterior"><i class="bi bi-chevron-left"></i></button>
+
+          <div class="swiper pk-gallery-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide pk-sg-slide">
+                <a class="glightbox" href="assets/img/slider/i1.jpg" data-gallery="espaco" data-title="PlayKids">
+                  <img src="assets/img/slider/i1.jpg" alt="PlayKids" />
+                  <div class="pk-sg-overlay"><span><i class="bi bi-zoom-in"></i></span></div>
+                </a>
+              </div>
+              <div class="swiper-slide pk-sg-slide">
+                <a class="glightbox" href="assets/img/slider/i2.jpg" data-gallery="espaco" data-title="PlayKids">
+                  <img src="assets/img/slider/i2.jpg" alt="PlayKids" />
+                  <div class="pk-sg-overlay"><span><i class="bi bi-zoom-in"></i></span></div>
+                </a>
+              </div>
+              <div class="swiper-slide pk-sg-slide">
+                <a class="glightbox" href="assets/img/slider/i3.jpg" data-gallery="espaco" data-title="PlayKids">
+                  <img src="assets/img/slider/i3.jpg" alt="PlayKids" />
+                  <div class="pk-sg-overlay"><span><i class="bi bi-zoom-in"></i></span></div>
+                </a>
+              </div>
+              <div class="swiper-slide pk-sg-slide">
+                <a class="glightbox" href="assets/img/slider/i4.jpg" data-gallery="espaco" data-title="PlayKids">
+                  <img src="assets/img/slider/i4.jpg" alt="PlayKids" />
+                  <div class="pk-sg-overlay"><span><i class="bi bi-zoom-in"></i></span></div>
+                </a>
+              </div>
+              <div class="swiper-slide pk-sg-slide">
+                <a class="glightbox" href="assets/img/slider/i5.jpg" data-gallery="espaco" data-title="PlayKids">
+                  <img src="assets/img/slider/i5.jpg" alt="PlayKids" />
+                  <div class="pk-sg-overlay"><span><i class="bi bi-zoom-in"></i></span></div>
+                </a>
+              </div>
+              <div class="swiper-slide pk-sg-slide">
+                <a class="glightbox" href="assets/img/slider/i6.jpg" data-gallery="espaco" data-title="PlayKids">
+                  <img src="assets/img/slider/i6.jpg" alt="PlayKids" />
+                  <div class="pk-sg-overlay"><span><i class="bi bi-zoom-in"></i></span></div>
+                </a>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
           </div>
-          <!-- Fotos menores -->
-          <div class="pk-sg-item">
-            <img
-              src="https://espacodiversaoearte.com.br/wp-content/uploads/2019/05/buffet-infantil-na-zona-norte-de-sp-salao-de-festa.jpg"
-              alt="Área de Atividades"
-            />
-            <div class="pk-sg-overlay"><span></span></div>
-          </div>
-          <div class="pk-sg-item">
-            <img
-              src="https://espacodiversaoearte.com.br/wp-content/uploads/2019/05/buffet-infantil-na-zona-norte-de-sp-salao-de-festa.jpg"
-              alt="Zona de Estudo"
-            />
-            <div class="pk-sg-overlay"><span></span></div>
-          </div>
-          <div class="pk-sg-item">
-            <img
-              src="https://espacodiversaoearte.com.br/wp-content/uploads/2019/05/buffet-infantil-na-zona-norte-de-sp-salao-de-festa.jpg"
-              alt="Transporte"
-            />
-            <div class="pk-sg-overlay"><span></span></div>
-          </div>
-          <div class="pk-sg-item">
-            <img
-              src="https://espacodiversaoearte.com.br/wp-content/uploads/2019/05/buffet-infantil-na-zona-norte-de-sp-salao-de-festa.jpg"
-              alt="Insufláveis"
-            />
-            <div class="pk-sg-overlay"><span></span></div>
-          </div>
+
+          <button class="pk-gal-btn pk-gal-next" aria-label="Próximo"><i class="bi bi-chevron-right"></i></button>
         </div>
+
+        <!-- Instagram CTA -->
+        <div class="pk-insta-cta text-center mt-5" data-aos="fade-up">
+          <a href="https://www.instagram.com/playkidsrainha.oficial/" target="_blank" rel="noopener" class="pk-insta-link">
+            <i class="bi bi-instagram pk-insta-icon"></i>
+            <p class="pk-insta-txt">Descubra mais do nosso universo criativo no <strong>Instagram</strong></p>
+          </a>
+        </div>
+
       </div>
     </section>
 
@@ -1322,13 +1417,14 @@
                 <i class="bi bi-envelope-heart-fill text-green me-2"></i>
                 Enviar Mensagem
               </h5>
-              <form id="contactForm" novalidate>
+              <form id="contactForm" action="forms/contact.php" method="post" novalidate>
                 <div class="row g-3">
                   <div class="col-sm-6">
                     <label class="pk-label" for="cf-nome">Nome *</label>
                     <input
                       type="text"
                       id="cf-nome"
+                      name="name"
                       class="pk-input"
                       placeholder="O seu nome"
                       required
@@ -1339,6 +1435,7 @@
                     <input
                       type="email"
                       id="cf-email"
+                      name="email"
                       class="pk-input"
                       placeholder="email@exemplo.com"
                       required
@@ -1349,19 +1446,20 @@
                     <input
                       type="tel"
                       id="cf-telefone"
+                      name="phone"
                       class="pk-input"
                       placeholder="+351 XXX XXX XXX"
                     />
                   </div>
                   <div class="col-sm-6">
                     <label class="pk-label" for="cf-assunto">Assunto</label>
-                    <select id="cf-assunto" class="pk-input pk-select">
+                    <select id="cf-assunto" name="subject" class="pk-input pk-select">
                       <option value="">Selecionar serviço…</option>
                       <option>Festas de Aniversário</option>
                       <option>Após Escola</option>
                       <option>Tempo de Férias</option>
                       <option>Transporte Escolar</option>
-                      <option>Insufláveis &amp; Trampolins</option>
+                      <option>Insufláveis</option>
                       <option>Outro</option>
                     </select>
                   </div>
@@ -1369,6 +1467,7 @@
                     <label class="pk-label" for="cf-mensagem">Mensagem *</label>
                     <textarea
                       id="cf-mensagem"
+                      name="message"
                       class="pk-input pk-textarea"
                       rows="4"
                       placeholder="Escreva a sua mensagem aqui…"
@@ -1378,17 +1477,14 @@
                   <div class="col-12">
                     <button
                       type="submit"
+                      id="cf-submit"
                       class="btn pk-btn-primary w-100 justify-content-center"
                     >
                       <i class="bi bi-send-fill me-2"></i> Enviar Mensagem
                     </button>
                   </div>
                   <!-- Feedback -->
-                  <div
-                    class="col-12"
-                    id="cf-feedback"
-                    style="display: none"
-                  ></div>
+                  <div class="col-12" id="cf-feedback" style="display:none;"></div>
                 </div>
               </form>
 
@@ -1398,9 +1494,9 @@
                   <i class="bi bi-telephone-fill"></i>
                   <span>+351 965 076 786</span>
                 </a>
-                <a href="mailto:geral@playkids.pt" class="pk-quick-item">
+                <a href="mailto:contacto@playkidsrainha.pt" class="pk-quick-item">
                   <i class="bi bi-envelope-fill"></i>
-                  <span>geral@playkids.pt</span>
+                  <span>contacto@playkidsrainha.pt</span>
                 </a>
                 <a
                   href="https://wa.me/351965076786"
@@ -1608,7 +1704,7 @@
               <li><a href="apos-escola.html">Após Escola</a></li>
               <li><a href="ferias.html">Tempo de Férias</a></li>
               <li>
-                <a href="insuflaveis.html">Insufláveis &amp; Trampolins</a>
+                <a href="insuflaveis.html">Insufláveis</a>
               </li>
             </ul>
           </div>
@@ -1749,5 +1845,52 @@
     </script>
     <script src="assets/js/pk-modals.js"></script>
     <script src="assets/js/pk-agendar.js"></script>
+    <script>
+      // Custom video players
+      document.querySelectorAll('.pk-vid-wrap').forEach(function(wrap) {
+        var video   = wrap.querySelector('video');
+        var overlay = wrap.querySelector('.pk-vid-overlay');
+        var icon    = wrap.querySelector('.pk-vid-play i');
+        var fsBtn   = wrap.querySelector('.pk-vid-fs');
+        if (!video || !overlay || !icon || !fsBtn) return;
+
+        overlay.addEventListener('click', function() {
+          if (video.paused) {
+            video.play();
+            icon.className = 'bi bi-pause-fill';
+            overlay.classList.add('pk-vid-playing');
+          } else {
+            video.pause();
+            icon.className = 'bi bi-play-fill';
+            overlay.classList.remove('pk-vid-playing');
+          }
+        });
+
+        video.addEventListener('ended', function() {
+          icon.className = 'bi bi-play-fill';
+          overlay.classList.remove('pk-vid-playing');
+        });
+
+        fsBtn.addEventListener('click', function() {
+          if      (video.requestFullscreen)       video.requestFullscreen();
+          else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+          else if (video.mozRequestFullScreen)    video.mozRequestFullScreen();
+        });
+      });
+
+      new Swiper('.pk-gallery-swiper', {
+        slidesPerView: 1.2,
+        centeredSlides: true,
+        spaceBetween: 16,
+        loop: true,
+        grabCursor: true,
+        pagination: { el: '.pk-gallery-swiper .swiper-pagination', clickable: true },
+        navigation: { nextEl: '.pk-gal-next', prevEl: '.pk-gal-prev' },
+        breakpoints: {
+          576: { slidesPerView: 2,   centeredSlides: true, spaceBetween: 16 },
+          992: { slidesPerView: 3,   centeredSlides: true, spaceBetween: 20 }
+        }
+      });
+    </script>
   </body>
 </html>
