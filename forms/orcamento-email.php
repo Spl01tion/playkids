@@ -2,38 +2,55 @@
 // PlayKids – Pedido de Orcamento via email
 // SMTP: Hostinger | smtp.hostinger.com:465
 
+header('Content-Type: application/json; charset=utf-8');
+
+// ── Localizar vendor (fora ou dentro de public_html) ─────
+$autoload = null;
+foreach ([__DIR__ . '/../../vendor/autoload.php', __DIR__ . '/../vendor/autoload.php'] as $_p) {
+    if (file_exists($_p)) { $autoload = $_p; break; }
+}
+if (!$autoload) {
+    http_response_code(500);
+    echo json_encode(['status' => 'error', 'message' => 'Erro de configuração.', 'debug' => 'vendor/autoload.php nao encontrado']);
+    exit;
+}
+require $autoload;
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require __DIR__ . '/../vendor/autoload.php';
-
-$envFile = __DIR__ . '/../.env';
-if (file_exists($envFile)) {
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-    $dotenv->load();
+// ── Ler .env (fora ou dentro de public_html) ─────────────
+$smtpPassword = '';
+foreach ([__DIR__ . '/../../.env', __DIR__ . '/../.env'] as $_env) {
+    if (file_exists($_env)) {
+        $_data = parse_ini_file($_env);
+        $smtpPassword = $_data['SMTP_PASSWORD'] ?? '';
+        break;
+    }
 }
 
-define('ORC_SMTP_HOST', 'smtp.hostinger.com');
-define('ORC_SMTP_PORT', 465);
-define('ORC_SMTP_USER', 'contacto@playkidsrainha.pt');
-define('ORC_SMTP_PASS', $_ENV['SMTP_PASSWORD'] ?? '');
-define('ORC_MAIL_PARA', 'contacto@playkidsrainha.pt');
-
-header('Content-Type: application/json; charset=utf-8');
+// ── Configuração ──────────────────────────────────────────
+$smtpHost = 'smtp.hostinger.com';
+$smtpPort = 465;
+$smtpUser = 'contacto@playkidsrainha.pt';
+$mailPara = 'contacto@playkidsrainha.pt';
+$mailNome = 'PlayKids';
+$siteUrl  = 'https://www.playkidsrainha.pt';
+// ─────────────────────────────────────────────────────────
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
-    echo json_encode(['status' => 'error', 'message' => 'Metodo nao permitido.']);
+    echo json_encode(['status' => 'error', 'message' => 'Método não permitido.']);
     exit;
 }
 
 $nome     = trim(filter_input(INPUT_POST, 'nome',     FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
 $telefone = trim(filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
 $email    = trim(filter_input(INPUT_POST, 'email',    FILTER_SANITIZE_EMAIL)         ?? '');
-$servicos  = trim(filter_input(INPUT_POST, 'servicos', FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
-$detalhes  = trim(filter_input(INPUT_POST, 'detalhes', FILTER_UNSAFE_RAW) ?? '');
-$detalhes  = strip_tags($detalhes);
-$obs       = trim(filter_input(INPUT_POST, 'obs',      FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
+$servicos = trim(filter_input(INPUT_POST, 'servicos', FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
+$detalhes = trim(filter_input(INPUT_POST, 'detalhes', FILTER_UNSAFE_RAW)             ?? '');
+$detalhes = strip_tags($detalhes);
+$obs      = trim(filter_input(INPUT_POST, 'obs',      FILTER_SANITIZE_SPECIAL_CHARS) ?? '');
 
 if (empty($nome) || empty($telefone)) {
     http_response_code(400);
@@ -43,7 +60,6 @@ if (empty($nome) || empty($telefone)) {
 
 $dataHora = date('d/m/Y H:i');
 
-// Logo
 $logoPath = __DIR__ . '/../assets/img/Logo_noslogan.png';
 $logoTag  = file_exists($logoPath)
     ? '<img src="cid:pk_logo" alt="PlayKids" style="height:60px;width:auto;">'
@@ -53,12 +69,12 @@ $mail = new PHPMailer(true);
 
 try {
     $mail->isSMTP();
-    $mail->Host       = ORC_SMTP_HOST;
+    $mail->Host       = $smtpHost;
     $mail->SMTPAuth   = true;
-    $mail->Username   = ORC_SMTP_USER;
-    $mail->Password   = ORC_SMTP_PASS;
+    $mail->Username   = $smtpUser;
+    $mail->Password   = $smtpPassword;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port       = ORC_SMTP_PORT;
+    $mail->Port       = $smtpPort;
     $mail->CharSet    = 'UTF-8';
     $mail->SMTPOptions = ['ssl' => [
         'verify_peer'       => false,
@@ -66,10 +82,10 @@ try {
         'allow_self_signed' => true,
     ]];
 
-    $mail->setFrom(ORC_SMTP_USER, 'PlayKids');
-    $mail->addAddress(ORC_MAIL_PARA, 'PlayKids');
+    $mail->setFrom($smtpUser, $mailNome);
+    $mail->addAddress($mailPara, $mailNome);
     $mail->addReplyTo(
-        (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) ? $email : ORC_SMTP_USER,
+        (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) ? $email : $smtpUser,
         $nome
     );
     $mail->XMailer = 'PlayKids Mailer';
@@ -79,28 +95,24 @@ try {
         $mail->addEmbeddedImage($logoPath, 'pk_logo', 'pk_logo.png', 'base64', 'image/png');
     }
 
-    $mail->Subject = 'Pedido de Orcamento de ' . $nome;
+    $mail->Subject = 'Pedido de Orcamento de ' . $nome . ' - PlayKids';
     $mail->isHTML(true);
 
-    // Linhas de detalhe
     $rows = '';
     $items = [
         'Nome'              => htmlspecialchars($nome),
         'Telefone/WhatsApp' => '<a href="https://wa.me/' . preg_replace('/\D/', '', $telefone) . '" style="color:#25D366;text-decoration:none;font-weight:bold;">' . htmlspecialchars($telefone) . '</a>',
     ];
-    if (!empty($email))    $items['E-mail']    = '<a href="mailto:' . htmlspecialchars($email) . '" style="color:#c2185b;text-decoration:none;">' . htmlspecialchars($email) . '</a>';
-    if (!empty($servicos)) $items['Servicos']   = htmlspecialchars($servicos);
-    if (!empty($detalhes)) $items['Detalhes'] = '<span style="font-size:13px;line-height:1.8;color:#333;">' . nl2br(htmlspecialchars($detalhes)) . '</span>';
+    if (!empty($email))    $items['E-mail']     = '<a href="mailto:' . htmlspecialchars($email) . '" style="color:#c2185b;text-decoration:none;">' . htmlspecialchars($email) . '</a>';
+    if (!empty($servicos)) $items['Servicos']    = htmlspecialchars($servicos);
+    if (!empty($detalhes)) $items['Detalhes']    = '<span style="font-size:13px;line-height:1.8;color:#333;">' . nl2br(htmlspecialchars($detalhes)) . '</span>';
     if (!empty($obs))      $items['Observacoes'] = nl2br(htmlspecialchars($obs));
 
     foreach ($items as $label => $value) {
-        $rows .= '
-        <tr>
-          <td style="padding:10px 0;border-bottom:1px solid #f0e0f5;vertical-align:top;">
+        $rows .= '<tr><td style="padding:10px 0;border-bottom:1px solid #f0e0f5;vertical-align:top;">
             <span style="color:#999;font-size:11px;text-transform:uppercase;letter-spacing:.5px;">' . $label . '</span><br>
             <span style="color:#2d0020;font-size:14px;">' . $value . '</span>
-          </td>
-        </tr>';
+          </td></tr>';
     }
 
     $mail->Body = '<!DOCTYPE html>
@@ -118,7 +130,7 @@ try {
     <table width="100%" cellpadding="0" cellspacing="0">' . $rows . '</table>
   </td></tr>
   <tr><td style="background:#fdf2f8;padding:14px 36px;text-align:center;border-top:1px solid #f0c8e0;">
-    <p style="margin:0;color:#aaa;font-size:12px;">Recebido em ' . $dataHora . ' | playkidsrainha.pt</p>
+    <p style="margin:0;color:#aaa;font-size:12px;">Recebido em ' . $dataHora . ' | <a href="' . $siteUrl . '" style="color:#c2185b;text-decoration:none;">playkidsrainha.pt</a></p>
   </td></tr>
 </table>
 </td></tr>
@@ -126,18 +138,21 @@ try {
 </body></html>';
 
     $mail->AltBody = "Novo Pedido de Orcamento - PlayKids\r\n\r\n"
-        . "Nome: {$nome}\r\n"
-        . "Telefone: {$telefone}\r\n"
-        . (!empty($email)    ? "Email: {$email}\r\n"       : '')
-        . (!empty($servicos)  ? "Servicos: {$servicos}\r\n"   : '')
-        . (!empty($detalhes)  ? "\r\n{$detalhes}\r\n"        : '')
-        . (!empty($obs)       ? "Obs: {$obs}\r\n"            : '')
-        . "\r\nRecebido em {$dataHora}";
+        . "Nome: {$nome}\r\nTelefone: {$telefone}"
+        . (!empty($email)    ? "\r\nEmail: {$email}"       : '')
+        . (!empty($servicos) ? "\r\nServicos: {$servicos}" : '')
+        . (!empty($detalhes) ? "\r\n\r\n{$detalhes}"       : '')
+        . (!empty($obs)      ? "\r\nObs: {$obs}"           : '')
+        . "\r\n\r\nRecebido em {$dataHora}";
 
     $mail->send();
     echo json_encode(['status' => 'success']);
 
 } catch (Exception $e) {
     http_response_code(500);
-    echo json_encode(['status' => 'error', 'debug' => $mail->ErrorInfo]);
+    echo json_encode([
+        'status'  => 'error',
+        'message' => 'Erro ao enviar. Tente novamente.',
+        'debug'   => $mail->ErrorInfo,
+    ]);
 }
