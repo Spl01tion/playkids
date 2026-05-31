@@ -37,6 +37,21 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
+
+    <!-- PRELOADER -->
+    <div id="pk-preloader">
+      <div class="pk-preloader-inner">
+        <div class="pk-circles">
+          <span class="pk-c pk-c1"></span>
+          <span class="pk-c pk-c2"></span>
+          <span class="pk-c pk-c3"></span>
+          <span class="pk-c pk-c4"></span>
+          <span class="pk-c pk-c5"></span>
+        </div>
+        <p class="pk-preloader-txt">PlayKids Rainha</p>
+      </div>
+    </div>
+
     <!-- ═══════════════════════════════════════════════════
      NAVBAR
 ═══════════════════════════════════════════════════ -->
@@ -80,7 +95,7 @@
             <li class="nav-item ms-lg-3">
               <a
                 class="btn pk-btn-whatsapp"
-                href="https://wa.me/351965076786?text=Olá%20PlayKids!%20Gostaria%20de%20mais%20informações."
+                href="https://wa.me/+351937608823?text=Olá%20PlayKids!%20Gostaria%20de%20mais%20informações."
                 target="_blank"
               >
                 <i class="bi bi-whatsapp me-1"></i> Fale Connosco
@@ -1361,7 +1376,7 @@
           descubra o serviço perfeito para o seu filho!
         </p>
         <a
-          href="https://wa.me/351965076786?text=Olá%20PlayKids!%20Gostaria%20de%20mais%20informações%20sobre%20os%20vossos%20serviços."
+          href="https://wa.me/+351937608823?text=Olá%20PlayKids!%20Gostaria%20de%20mais%20informações%20sobre%20os%20vossos%20serviços."
           target="_blank"
           class="btn pk-btn-cta-white"
         >
@@ -1499,12 +1514,12 @@
                   <span>contacto@playkidsrainha.pt</span>
                 </a>
                 <a
-                  href="https://wa.me/351965076786"
+                  href="https://wa.me/+351937608823"
                   target="_blank"
                   class="pk-quick-item pk-quick-wa"
                 >
                   <i class="bi bi-whatsapp"></i>
-                  <span>WhatsApp</span>
+                  <span>+351 937 608 823</span>
                 </a>
               </div>
             </div>
@@ -1687,7 +1702,7 @@
                 ><i class="bi bi-tiktok"></i
               ></a>
               <a
-                href="https://wa.me/351965076786"
+                href="https://wa.me/+351937608823"
                 target="_blank"
                 class="social-btn social-wa"
                 aria-label="WhatsApp"
@@ -1726,8 +1741,12 @@
                 <a href="tel:+351965076786">+351 965 076 786</a>
               </li>
               <li>
+                <i class="bi bi-whatsapp"></i>
+                <a href="tel:+351937608823">+351 937 608 823</a>
+              </li>
+              <li>
                 <i class="bi bi-envelope-fill"></i>
-                <a href="mailto:geral@playkids.pt">geral@playkids.pt</a>
+                <a href="mailto:contacto@playkidsrainha.pt">contacto@playkidsrainha.pt</a>
               </li>
               <li>
                 <i class="bi bi-geo-alt-fill"></i>
@@ -1758,7 +1777,7 @@
               </li>
             </ul>
             <a
-              href="https://wa.me/351965076786"
+              href="https://wa.me/+351937608823"
               target="_blank"
               class="btn pk-btn-whatsapp mt-3 w-100 justify-content-center"
             >
@@ -1876,6 +1895,15 @@
           else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
           else if (video.mozRequestFullScreen)    video.mozRequestFullScreen();
         });
+      });
+
+      // Preloader
+      window.addEventListener('load', function () {
+        var pre = document.getElementById('pk-preloader');
+        if (pre) {
+          pre.classList.add('pk-hide');
+          setTimeout(function () { pre.style.display = 'none'; }, 3100);
+        }
       });
 
       new Swiper('.pk-gallery-swiper', {
