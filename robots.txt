@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Bloquear diretórios sem conteúdo público
+Disallow: /vendor/
+Disallow: /forms/
+Disallow: /assets/vendor/
+
+# Sitemap
+Sitemap: https://www.playkidsrainha.pt/sitemap.xml

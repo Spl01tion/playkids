@@ -3,8 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PlayKids – Onde a diversão não tem limites!</title>
-    <link rel="icon" href="assets/img/favicon/favicon-16x16.png" />
+    <title>PlayKids Rainha – Espaço Infantil em Caldas da Rainha</title>
+    <meta name="description" content="Espaço infantil de referência em Caldas da Rainha. Festas de aniversário, transporte escolar, após escola, tempo de férias e insufláveis para crianças dos 1 aos 12 anos." />
+    <meta name="keywords" content="espaço infantil Caldas da Rainha, festas aniversário crianças, transporte escolar, após escola, tempo de férias, insufláveis, PlayKids Rainha" />
+    <meta name="author" content="PlayKids Rainha" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.playkidsrainha.pt/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PlayKids Rainha" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:title" content="PlayKids Rainha – Espaço Infantil em Caldas da Rainha" />
+    <meta property="og:description" content="Espaço infantil de referência em Caldas da Rainha. Festas de aniversário, transporte escolar, após escola, tempo de férias e insufláveis para crianças dos 1 aos 12 anos." />
+    <meta property="og:url" content="https://www.playkidsrainha.pt/" />
+    <meta property="og:image" content="https://www.playkidsrainha.pt/assets/img/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PlayKids Rainha – Espaço Infantil em Caldas da Rainha" />
+    <meta name="twitter:description" content="Espaço infantil de referência em Caldas da Rainha. Festas de aniversário, transporte escolar, após escola, tempo de férias e insufláveis para crianças dos 1 aos 12 anos." />
+    <meta name="twitter:image" content="https://www.playkidsrainha.pt/assets/img/og-image.jpg" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="assets/img/favicon/site.webmanifest" />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ChildCare",
+      "name": "PlayKids Rainha",
+      "description": "Espaço infantil de referência em Caldas da Rainha. Festas de aniversário, transporte escolar, após escola, tempo de férias e insufláveis para crianças dos 1 aos 12 anos.",
+      "url": "https://www.playkidsrainha.pt",
+      "logo": "https://www.playkidsrainha.pt/assets/img/Logo_slogan.png",
+      "image": "https://www.playkidsrainha.pt/assets/img/og-image.jpg",
+      "telephone": "+351965076786",
+      "email": "contacto@playkidsrainha.pt",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Manuel Mafra, 35 A",
+          "addressLocality": "Caldas da Rainha",
+          "addressCountry": "PT"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua António de Oliveira, 40B",
+          "addressLocality": "Caldas da Rainha",
+          "addressCountry": "PT"
+        }
+      ],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "10:00",
+        "closes": "19:00"
+      },
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "sameAs": [
+        "https://www.instagram.com/playkidsrainha.oficial/"
+      ]
+    }
+    </script>
 
     <!-- Google Fonts (Fredoka ≈ Sunny Spells · Nunito ≈ Como) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -352,6 +420,23 @@
             fill="#ffffff"
           />
         </svg>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+     CTA ORÇAMENTO
+═══════════════════════════════════════════════════ -->
+    <section class="py-4 bg-white">
+      <div class="container">
+        <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3 px-4 py-4 rounded-4 shadow-sm" style="background: linear-gradient(135deg,#eef4ff 0%,#fde8f6 100%);">
+          <div>
+            <h5 class="fw-bold mb-1" style="color:var(--pk-dark)">Comece a Organizar a Diversão</h5>
+            <p class="mb-0 pk-text">Peça um orçamento gratuito e sem compromisso.</p>
+          </div>
+          <button type="button" class="btn pk-btn-primary btn-lg flex-shrink-0" onclick="pkModal.orcamento()">
+            <i class="bi bi-send-fill me-2"></i>Pedir Orçamento
+          </button>
+        </div>
       </div>
     </section>
 
